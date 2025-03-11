@@ -1,0 +1,706 @@
+/* Basic Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+/* body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f5;
+    font-family: 'Georgia', serif;
+} */
+
+.book {
+    width: 600px;
+    height: 800px;
+    position: relative;
+    perspective: 2000px;
+}
+
+.cover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #8b5d33;
+    transform-origin: left;
+    z-index: 3;
+    transform: rotateY(0);
+    transition: transform 1s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.page {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background: #fff;
+    transform-origin: left;
+    backface-visibility: hidden;
+    transition: transform 1s ease;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.left-page {
+    left: 0;
+    z-index: 2;
+}
+
+.right-page {
+    transform-origin: right;
+    z-index: 1;
+    background: linear-gradient(220deg, #000, #223444);
+    border-radius: 5px 30px 30px 5px;
+}
+
+.page .content {
+    padding: 40px;
+}
+
+.page h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.page p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+.open .cover {
+    transform: rotateY(-160deg);
+}
+
+.open .left-page {
+    transform: rotateY(0deg);
+}
+
+.open .right-page {
+    transform: rotateY(-180deg);
+}
+
+
+
+
+
+
+
+
+/* Flip Book Container */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.flip-book {
+    display: flex;
+    width: 1000px;
+    height: 550px;
+    perspective: 5000px;
+    animation: loadFlip 1s ease-in-out;
+    margin: auto;
+
+
+}
+
+/* Pages */
+.page {
+    width: 50%;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+    transition: transform 1s ease-in-out linear infinite;
+}
+
+.left-page {
+    padding: 20px;
+    text-align: start;
+    padding: 30px 40px;
+}
+
+.right-page {
+    padding: 20px;
+    overflow: hidden;
+
+
+}
+
+/* Flip Animation */
+@keyframes loadFlip {
+    0% {
+        transform: rotateY(-90deg);
+    }
+
+    100% {
+        transform: rotateY(0deg);
+    }
+}
+
+
+/* Left Page Content */
+
+.left-page {
+    background: linear-gradient(135deg,  #000, #223444);
+    border-radius: 30px 5px 5px 30px;
+    color: black !important;
+
+}
+
+.left-page .projactname {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 16px;
+    font-family: 'Georgia', serif;
+    border-bottom: 2px solid rebeccapurple;
+    color: white;
+
+
+}
+
+.left-page .heading {
+    font-size: 30px;
+    font-weight: 400;
+    /* font-family: 'Georgia', serif; */
+    margin-bottom: 20px; 
+    color: white;
+
+}
+
+.left-page .subheading {
+    font-size: 25px;
+    /* font-family: 'Georgia', serif; */
+    font-weight: 300;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.left-page .paragraph {
+    font-size: 16px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: start;
+    color: white;
+
+}
+
+.technology {
+    word-spacing: 10px;
+    letter-spacing: 0px;
+    color: rgb(233, 231, 231) !important;
+}
+
+
+.left-page .link {
+    margin: 20px 0px;
+    cursor: pointer;
+    color: rgb(0, 123, 255);
+
+}
+
+.left-page .link a {
+    /* color: aquamarine !important; */
+
+}
+
+
+.left-page .social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.left-page .social-icons a {
+    color: #333;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+
+/* Right Page Card Stack */
+
+.card-stack {
+    position: absolute;
+    top: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    left: 50%;
+
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 240px;
+    height: 350px;
+    position: absolute;
+    perspective: 1000px;
+    border-radius: 10px;
+    overflow: hidden;
+    transform: translateY(-40%)translateX(-50%);
+    left: 50% !important;
+
+
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+
+}
+
+/* .flip-card-front {
+    width: 100%;
+    height: 200%; */
+/* overflow: scroll; */
+/* background-color: red; */
+/* border: 4px solid olivedrab; */
+/* } */
+
+.scroll h1 {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    /* Ensure content scrolls vertically */
+    animation: scrollY 10s linear infinite;
+    /* Apply animation */
+    transition: 5s ease-in-out
+}
+
+
+@keyframes scrollY {
+    0% {
+        transform: translateY(0);
+
+    }
+
+    100% {
+        transform: translateY(-100%);
+        /* Adjust based on content height */
+    }
+
+}
+
+@keyframes scrollY2 {
+    50% {
+        transform: translateY(0);
+    }
+
+    0% {
+        transform: translateY(-50%);
+        /* Adjust based on content height */
+    }
+}
+
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(-180deg);
+}
+
+.flip-card-front {
+    border-radius: 10px;
+
+}
+
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    /* Safari */
+    backface-visibility: hidden;
+    border-radius: 10px;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+    background-color: #bbb;
+    color: black;
+    border-radius: 10px;
+}
+
+/* Style the back side */
+.flip-card-back {
+    background-color: dodgerblue;
+    color: white;
+    transform: rotateY(180deg);
+    border-radius: 10px;
+}
+
+.flip-card {
+    top: 20px;
+    display: none;
+}
+
+
+
+.flip-card:nth-child(1) {
+    top: 20px;
+    /* left: 50% !important; */
+    /* order: 1 !important; */
+    display: block;
+
+}
+
+
+.numbering {
+    position: absolute;
+    color: white;
+    top: 8px;
+    right: -22px;
+    font-size: 10px;
+    /* border-radius: 4px; */
+    display: block;
+    width: 90px;
+    height: auto;
+    padding: 5px 10px;
+    background-color: red;
+    transform: rotate(40deg);
+
+}
+
+.flip-card:hover {
+    z-index: 9999;
+    order: -1 !important;
+}
+
+.cardorder h1 {
+    text-align: center;
+    margin: auto;
+}
+
+
+.orderpoint {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    overflow-x: scroll;
+    gap: 15px;
+    align-items: center;
+    justify-content: start;
+
+
+
+}
+
+.orderpoint .items {
+    width: 35px;
+    height: 35px;
+    flex: 1;
+    flex: none;
+    border-radius: 50%;
+    /* position: absolute; */
+
+    background-color: #36796b;
+    /* margin-left:10px ; */
+    position: relative;
+
+
+
+
+
+}
+
+.orderpoint::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+.orderpoint .itemline {
+    height: 2px;
+    left: 0;
+    right: 0;
+    background-color: rebeccapurple;
+    position: absolute;
+    flex: none;
+    z-index: -10;
+
+}
+
+.orderpoint .items {
+    padding: 0px;
+}
+
+
+.orderpoint .items a {
+    text-align: center;
+    margin-right: auto;
+    display: block;
+    font-size: 12px;
+    line-height: 33px;
+
+    color: white;
+
+
+
+}
+
+
+/* .show_numberanddetails {
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #36796b;
+    position: absolute;
+    text-align: center;
+    color: white;
+    transform: translateX(-20%);
+    z-index: 999;
+}
+
+.show_numberanddetails::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-color: red;
+
+} */
+
+
+
+.items:nth-child(1):hover .flip-card:nth-child(1) {
+    display: block;
+}
+
+
+.closebtn {
+    padding: 2px 5px;
+    border: none;
+    background: lightcoral;
+    position: absolute;
+    top: -10px;
+    border-radius: 10px 10px 10px 0px;
+    right: -42px;
+    color: rgb(214, 211, 211);
+    cursor: pointer;
+
+    z-index: 999999;
+}
+
+
+
+
+@media only screen and (max-device-width: 480px) {
+    * {
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .left-page {
+        background: linear-gradient(-45deg,  #000, #0d1318);
+        border-radius: 30px 5px 5px 30px;
+        order: 1;
+        color: white;
+
+
+    }
+  
+    body {
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+    }
+
+    .flip-book {
+        flex-direction: column;
+        width: 100%;
+        margin: auto;
+        height: auto;
+        overflow-y: hidden;
+        /* padding: 30px 15px; */
+    }
+
+    .popup {
+        height: 90vh;
+        width: 100%;
+        padding: 20px 10px;
+        overflow-y: scroll;
+        z-index: 99;
+    }
+
+    .page {
+        width: 100%;
+        /* height: 100%; */
+        padding: 20px 10px;
+        border-radius: 0;
+        /* overflow-y: scroll; */
+    }
+
+
+    .right-page {
+        display: flex;
+        /* align-items: start; */
+        height: 450px;
+
+    }
+
+    .orderpoint {
+        flex-direction: column;
+        width: 50%;
+        height: 93%;
+        align-items: center;
+    }
+
+    .card-stack {
+        left: 60%;
+        top: 42%;
+
+    }
+
+    .itemline {
+        height: 100% !important;
+        width: 2px;
+        left: 10.5% !important;
+        background-color: rebeccapurple;
+        flex: none;
+        z-index: -10;
+
+
+    }
+
+
+    .numbering {
+        position: absolute;
+        color: white;
+        top: 8px;
+        right: -22px;
+        font-size: 10px;
+        /* border-radius: 4px; */
+        display: block;
+        width: 90px;
+        height: auto;
+        padding: 5px 10px;
+        background-color: red;
+        transform: rotate(40deg);
+
+    }
+
+
+    .scroll h1 {
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        /* Ensure content scrolls vertically */
+        animation: scrollY 10s linear infinite;
+        /* Apply animation */
+        transition: 5s ease-in-out
+    }
+
+    .orderpoint .items {
+        padding: 0px;
+    }
+
+    .orderpoint .items a {
+        text-align: center;
+        display: block;
+        font-size: 20px;
+        line-height: 35px;
+        color: white;
+    }
+
+    .orderpoint .items {
+        width: 40px;
+        height: 40px;
+    }
+
+    .page p {
+        font-size: 1em;
+        color: #555;
+        overflow-wrap: break-word;
+    }
+
+    body {
+
+        position: relative;
+    }
+
+    .closebtn {
+        padding: 2px 5px;
+        border: none;
+        background: red;
+        position: absolute;
+        top: 0px;
+        border-radius: 0px 0px 0px 0px;
+        right: 0px;
+        color: rgb(214, 211, 211);
+        cursor: pointer;
+        z-index: 9999;
+    }
+    .footer-content{
+        padding-bottom: 30px;
+    }
+
+    footer-left, .footer-right {
+        flex: 1;
+        flex-direction: column;
+        column-gap: 50px;
+        margin: 0px;
+        padding: 0;
+        align-items: center;
+        /* margin-left: -50px; */
+    }
+    .footer-right{
+        width: 80%;
+
+    }
+
+    .contact-box{
+        width: 100%;
+        height: 150px;
+    }
+
+
+}
+
+body {
+    position: relative;
+    /* overflow-y: hidden; */
+    /* filter: blur(5px); */
+}
+
+.background_blur {
+    position: absolute;
+    background-color: #33333372;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 9;
+    filter: blur(3px);
+}
+
+
+
+/* 
+.projactmainImages{
+    max-width: 100%;
+    height: 120px;
+    padding: 10px 20px;
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+} */
